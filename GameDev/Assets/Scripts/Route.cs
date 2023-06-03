@@ -7,6 +7,7 @@ public class Route : MonoBehaviour
     Transform[] childObjects;
     public List<Transform> childNodeList = new List<Transform>();
 
+    // a callback function that is called by the editor whenever the scene view is being repainted
     void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
@@ -28,6 +29,7 @@ public class Route : MonoBehaviour
         childObjects = GetComponentsInChildren<Transform>();
         foreach(Transform child in childObjects)
         {
+            // avoid adding parent object (route) to childNodeList
             if(child != this.transform)
             {
                 childNodeList.Add(child);

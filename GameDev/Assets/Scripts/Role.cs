@@ -26,10 +26,12 @@ public class Role : MonoBehaviour
         }
     }
 
+    // coroutines: doing everything next or in an extra thread without touching update loop which is running 60 times a second (too mucg costing)
     IEnumerator Move()
     {
         if (isMoving)
         {
+            // paused and resumed coroutine
             yield break;
         }
         
