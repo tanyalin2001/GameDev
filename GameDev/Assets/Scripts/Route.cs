@@ -6,6 +6,7 @@ public class Route : MonoBehaviour
 {
     Transform[] childObjects;
     public List<Transform> childNodeList = new List<Transform>();
+    Renderer objectRenderer;
 
     // a callback function that is called by the editor whenever the scene view is being repainted
     void OnDrawGizmos()
@@ -33,6 +34,21 @@ public class Route : MonoBehaviour
             if(child != this.transform)
             {
                 childNodeList.Add(child);
+            }
+
+            // asign color according to tag
+            Renderer nodeRenderer = child.GetComponent<Renderer>();
+            switch (child.tag)
+            {
+                case "event":
+                    nodeRenderer.sharedMaterial.color = Color.blue;
+                    break;
+                case "fight":
+                    nodeRenderer.sharedMaterial.color = Color.red;
+                    break;
+                case "shop":
+                    nodeRenderer.sharedMaterial.color = Color.yellow;
+                    break;
             }
         }
     }
